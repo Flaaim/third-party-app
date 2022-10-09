@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Carbon\Carbon;
 
 class Token extends Model
 {
@@ -20,5 +21,7 @@ class Token extends Model
         return $this->belongsTo(User::class);
     }
 
-
+    public function hasExpired(){
+        return Carbon::now()->gte($this->updated_at->addSeconds($this->expires_in));
+    }
 }
