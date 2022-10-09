@@ -28,7 +28,7 @@ class TwitterAuthController extends Controller
         }
     }
     public function refresh(Request $request){
-        $response = $this->service->refesh($request);
+        $response = $this->service->refresh($request);
         $this->service->updateToken($response, $request);
         return redirect()->route('home'); 
     }
