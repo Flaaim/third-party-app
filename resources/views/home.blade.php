@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    {{$error}}
+                @endforeach
+            @endif
             <div class="card">
                 <div class="card-header">
                     Timeline
